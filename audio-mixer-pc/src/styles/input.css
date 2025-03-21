@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-darker-bg text-white font-rajdhani antialiased;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        @apply w-2;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-dark-bg rounded-full;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-goxlr-blue/30 rounded-full hover:bg-goxlr-blue/50 transition-colors;
+    }
+}
+
+@layer components {
+    .mixer-slider {
+        @apply appearance-none bg-transparent cursor-pointer;
+    }
+
+    .mixer-slider::-webkit-slider-thumb {
+        @apply appearance-none w-4 h-8 bg-goxlr-blue rounded-sm 
+               shadow-glow-blue cursor-pointer transition-all;
+    }
+
+    .mixer-slider::-webkit-slider-runnable-track {
+        @apply h-2 bg-dark-bg rounded-full;
+    }
+
+    .mixer-button {
+        @apply px-4 py-2 rounded-lg bg-dark-bg text-goxlr-blue
+               hover:bg-goxlr-blue/20 transition-all duration-200
+               font-orbitron focus:outline-none focus:ring-2
+               focus:ring-goxlr-blue/50;
+    }
+
+    .mixer-panel {
+        @apply bg-panel-bg rounded-xl p-6 shadow-lg;
+    }
+}
+
+@layer utilities {
+    .text-shadow-glow {
+        text-shadow: 0 0 10px currentColor;
+    }
+
+    .transition-gpu {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+}
+
+/* Custom animations */
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 10px currentColor;
+    }
+    50% {
+        box-shadow: 0 0 20px currentColor;
+    }
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Level meter animations */
+@keyframes level-meter {
+    0% {
+        transform: scaleY(0.3);
+    }
+    50% {
+        transform: scaleY(0.8);
+    }
+    100% {
+        transform: scaleY(0.3);
+    }
+}
+
+.animate-level {
+    animation: level-meter 0.5s ease-in-out infinite;
+    transform-origin: bottom;
+}
+
+/* Custom focus styles */
+.focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-goxlr-blue/50 focus:ring-offset-2 focus:ring-offset-darker-bg;
+}
+
+/* Gradient overlays */
+.gradient-overlay {
+    background: linear-gradient(180deg, 
+        rgba(10, 10, 10, 0) 0%,
+        rgba(10, 10, 10, 0.8) 100%
+    );
+}
+
+/* Custom slider styles */
+input[type="range"].vertical-slider {
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* Chromium */
+    width: 8px;
+    height: 200px;
+    padding: 0;
+}
